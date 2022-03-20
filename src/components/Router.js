@@ -1,0 +1,24 @@
+import React, { useState } from 'react';
+import { HashRouter, Routes, Route, Link } from 'react-router-dom';
+import Auth from '../routes/Auth';
+import Home from '../routes/Home';
+
+const AppRouter = () => {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    return (
+        <HashRouter>
+            <Routes>
+                {isLoggedIn ? (
+                    <>
+                        <Route exact path="/" element={<Home />}></Route>
+                    </>
+                ) : (
+                    <Route exact path="/" element={<Auth />}></Route>
+                )}
+            </Routes>
+        </HashRouter>
+    );
+};
+
+export default AppRouter;
